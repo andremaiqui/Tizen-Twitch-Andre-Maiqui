@@ -2741,7 +2741,7 @@ function updatePlayPauseVisibility(isPlaying) {
     playBtn.innerHTML = isPlaying ? ICON_SVG.pause : ICON_SVG.play;
     playBtn.setAttribute("aria-label", isPlaying ? "Pausar" : "Reproducir");
 }
-window.onload = function () {
+function initializeTwitchInterface() {
     twitchUser = loadStoredTwitchUser();
     buildNav();
     setupSearchInput();
@@ -2754,7 +2754,13 @@ window.onload = function () {
     setTimeout(tryInitialFocus, 150);
     window.addEventListener("keydown", handleKeyDown, true);
     if (twitchUser) startFollowedAutoRefresh();
-};
+}
+// A interface não deve esperar scripts remotos (como o Twitch Embed) para aparecer.
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeTwitchInterface, { once: true });
+} else {
+    initializeTwitchInterface();
+}
 function buildNav() {
     const list = document.getElementById("nav-list");
     if (!list) return;
