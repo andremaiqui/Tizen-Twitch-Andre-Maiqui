@@ -1,0 +1,9 @@
+node_modules/
+.vercel/
+.env
+.env.local
+*.log
+.DS_Store
+
+# Local Android signing key; never publish it
+capacitor/debug.keystore

@@ -1,0 +1,24 @@
+{
+  "appId": "com.osmtwich.app",
+  "appName": "OsmTwich",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "allowNavigation": [
+      "osmtwich.vercel.app",
+      "id.twitch.tv",
+      "www.twitch.tv",
+      "player.twitch.tv",
+      "embed.twitch.tv",
+      "clips.twitch.tv"
+    ]
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}

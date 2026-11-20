@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OsmTwich</title>
+<style>
+html,body{margin:0;height:100%;background:#000;color:#adadb8;font:28px 'Samsung Sans',Arial,sans-serif;display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+<span id="msg">Cargando…</span>
+<script>
+// Lanzador fijo: NO se edita nunca.
+// El workflow copia el index.html de la raíz del repo como app.html dentro del .wgt.
+location.replace('app.html');
+setTimeout(function () {
+  document.getElementById('msg').textContent = 'No se encontró app.html dentro del paquete.';
+}, 4000);
+</script>
+</body>
+</html>
