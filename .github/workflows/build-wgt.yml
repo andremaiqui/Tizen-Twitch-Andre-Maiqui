@@ -1,7 +1,6 @@
 name: Build Tizen .wgt
 
-# Serializa los dos workflows para que Android y Tizen adjunten assets
-# al mismo release/tag sin intentar crearlo simultáneamente.
+# Genera y publica el paquete Tizen en cada actualización de main.
 concurrency:
   group: osmtwich-release-${{ github.sha }}
   cancel-in-progress: false
@@ -10,9 +9,6 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - '.github/**'
-      - '*.md'
   workflow_dispatch: {}
 
 permissions:
@@ -20,7 +16,7 @@ permissions:
 
 env:
   # Primera versión del esquema: 2.7.1 -> 2.7.2 ... 2.7.9 -> 2.8.0 ...
-  # (la lógica está en .github/scripts/compute-version.sh, compartida con Android)
+  # (la lógica está en .github/scripts/compute-version.sh)
   VERSION_START: "2.7.1"
 
 jobs:
