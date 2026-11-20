@@ -46,10 +46,12 @@ jobs:
         env:
           WGT_NAME: ${{ steps.version.outputs.wgt_name }}
         run: |
-          # O app é incluído diretamente como index.html no .wgt, sem um iniciador
-          # que redireciona para app.html. Assim funciona na TV e nos emuladores web,
-          # nos quais a navegação por caminho relativo poderia retornar erro 404.
-          cp index.html tizen/index.html
+          # O WebKit de TVs Tizen antigas não entende sintaxe JavaScript recente
+          # (por exemplo, async/await e encadeamento opcional). Gere uma cópia
+          # compatível com o Chromium M47 usado em TVs Tizen de 2017; o index.html
+          # da versão web permanece intacto.
+          npm install --no-save --no-package-lock @babel/core@^7 @babel/preset-env@^7
+          node .github/scripts/transpile-tizen.js index.html tizen/index.html
           cp twitch-logo.png tizen/twitch-logo.png
           cd tizen
           zip -r "../$WGT_NAME" . -x ".*"
