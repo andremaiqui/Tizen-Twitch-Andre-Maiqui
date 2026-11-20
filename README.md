@@ -1,14 +1,10 @@
-# Twitch for TizenOS — Andre Maiqui
+<p align="center">
+  <img src="twitch-logo.png" alt="Logo da Twitch" width="480">
+</p>
 
-Aplicativo de código aberto para assistir à Twitch em TVs Samsung com Tizen e em navegadores, desenvolvido para navegação pelo controle remoto.
+<h1 align="center">Twitch for TizenOS — Andre Maiqui</h1>
 
-## Capturas de tela
-
-| | | |
-|---|---|---|
-| <img src="https://github.com/user-attachments/assets/5abc6494-e44d-4c9a-b469-108c2488b219" width="300" /> | <img src="https://github.com/user-attachments/assets/761bbb9f-f90a-4432-9ccf-76555ffe6a1d" width="300" /> | <img src="https://github.com/user-attachments/assets/98590a47-a3ee-4c7f-a081-2ec7484ffdbd" width="300" /> |
-| <img src="https://github.com/user-attachments/assets/57213eb4-232b-47f0-b80b-7523b481610e" width="300" /> | <img src="https://github.com/user-attachments/assets/c461a425-8817-4543-adcd-469b1f3b3350" width="300" /> | <img src="https://github.com/user-attachments/assets/502d4d6f-0840-41a3-9f94-aa27c1c2ee46" width="300" /> |
-| <img src="https://github.com/user-attachments/assets/1e8151a1-b02a-491f-8af1-7633e8fa5cde" width="300" /> | <img src="https://github.com/user-attachments/assets/5e1292ab-7749-4819-98e1-930dd1cf2435" width="300" /> | |
+<p align="center">Aplicativo de código aberto para assistir à Twitch em TVs Samsung com Tizen e em navegadores, desenvolvido para navegação pelo controle remoto.</p>
 
 ## Recursos
 
