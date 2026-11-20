@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
 <link rel="preconnect" href="https://embed.twitch.tv" crossorigin>
 <link rel="preconnect" href="https://player.twitch.tv" crossorigin>
@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="/icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>OsmTwich</title>
+    <title>Twitch for TizenOS</title>
     <meta name="app-version" content="auto">
 <script id="option-picker-keys">
 window.addEventListener("keydown", function (e) {
@@ -20,7 +20,7 @@ window.addEventListener("keydown", function (e) {
 <script id="i18n-v1">
 (function () {
     "use strict";
-    var SUPPORTED = ["en", "es", "ru", "it", "fr"];
+    var SUPPORTED = ["en", "es", "ru", "it", "fr", "pt"];
     var KEY = "osmtwich-settings-language";
     var ATTRS = ["aria-label", "placeholder", "title", "alt"];
     var SKIP_SEL = ".chat-msg, .stream-title, #player-stream-title, #channel-description";
@@ -93,6 +93,40 @@ window.addEventListener("keydown", function (e) {
     var DICTS = { en: EN, ru: {"Buscar": "Поиск", "Iniciar sesión con Twitch": "Вход через Twitch", "Con tu usuario y contraseña o escanea el QR en tu TV": "С логином и паролем или отсканируйте QR-код", "← Volver": "← Назад", "Canales seguidos": "Отслеживаемые каналы", "Destacados": "Рекомендуемое", "Streamers top": "Топ стримеров", "Juegos top": "Топ игр", "Categorías": "Категории", "Ajustes": "Настройки", "Cuenta": "Аккаунт", "Donar": "Поддержать", "Sugerencias": "Предложения", "Enviar sugerencia o reportar un error": "Отправить предложение или сообщить об ошибке", "Transmisiones destacadas": "Рекомендуемые трансляции", "Streamers más vistos ahora": "Самые популярные стримеры сейчас", "Juegos más vistos": "Самые популярные игры", "En vivo ahora": "Сейчас в эфире", "Clips destacados": "Рекомендуемые клипы", "VODs recientes": "Недавние записи", "Buscar canal": "Поиск канала", "Buscar canal…": "Поиск канала…", "Cerrar búsqueda": "Закрыть поиск", "Sugerencias de canales": "Подсказки каналов", "Nombre del canal de Twitch...": "Название канала Twitch...", "Escribe con tu teclado (PC) o usa el control del TV para abrir el teclado en pantalla.": "Печатайте на клавиатуре (ПК) или используйте пульт ТВ, чтобы открыть экранную клавиатуру.", "Buscando…": "Поиск…", "CANAL NO ENCONTRADO": "КАНАЛ НЕ НАЙДЕН", "Cargando…": "Загрузка…", "EN VIVO": "В ЭФИРЕ", "OFFLINE": "ОФЛАЙН", "(sin título)": "(без названия)", "Sin transmisiones recientes": "Нет недавних трансляций", "ayer": "вчера", "Inicia sesión para ver canales seguidos": "Войдите, чтобы видеть отслеживаемые каналы", "No hay transmisiones en vivo de este juego ahora.": "Сейчас нет трансляций этой игры.", "No se pudieron cargar juegos.": "Не удалось загрузить игры.", "No se pudieron cargar streamers.": "Не удалось загрузить стримеров.", "No se pudieron cargar transmisiones en español.": "Не удалось загрузить трансляции на русском.", "Este canal no tiene VODs recientes.": "У этого канала нет недавних записей.", "Este canal no ti...
         it: {"Buscar": "Cerca", "Iniciar sesión con Twitch": "Accedi con Twitch", "Con tu usuario y contraseña o escanea el QR en tu TV": "Con il tuo nome utente e password, oppure scansiona il QR sulla TV", "← Volver": "← Indietro", "Canales seguidos": "Canali seguiti", "Destacados": "In evidenza", "Streamers top": "Top streamer", "Juegos top": "Top giochi", "Categorías": "Categorie", "Ajustes": "Impostazioni", "Cuenta": "Account", "Donar": "Dona", "Sugerencias": "Suggerimenti", "Enviar sugerencia o reportar un error": "Invia un suggerimento o segnala un errore", "Transmisiones destacadas": "Stream in evidenza", "Streamers más vistos ahora": "Streamer più seguiti ora", "Juegos más vistos": "Giochi più visti", "En vivo ahora": "In diretta ora", "Clips destacados": "Clip in evidenza", "VODs recientes": "VOD recenti", "Buscar canal": "Cerca canale", "Buscar canal…": "Cerca canale…", "Cerrar búsqueda": "Chiudi ricerca", "Sugerencias de canales": "Suggerimenti di canali", "Nombre del canal de Twitch...": "Nome del canale Twitch...", "Escribe con tu teclado (PC) o usa el control del TV para abrir el teclado en pantalla.": "Scrivi con la tastiera (PC) o usa il telecomando della TV per aprire la tastiera su schermo.", "Buscando…": "Ricerca in corso…", "CANAL NO ENCONTRADO": "CANALE NON TROVATO", "Cargando…": "Caricamento…", "EN VIVO": "IN DIRETTA", "OFFLINE": "OFFLINE", "(sin título)": "(senza titolo)", "Sin transmisiones recientes": "Nessuno stream recente", "ayer": "ieri", "Inicia sesión para ver canales seguidos": "Accedi per vedere i canali seguiti", "No hay transmisiones en vivo de este juego ahora.": "Al momento non ci sono stream in diretta di questo gioco.", "No se pudieron cargar juegos.": "Impossibile caricare i giochi.", "No se pudieron cargar streamers.": "Impossibile caricare gli streamer.", "No se pudieron cargar transmisiones en español.": "Impossibile caricare gli stream in italiano.", "Este canal no tiene VODs recientes.": "Questo canale non ha VOD recenti...
         fr: {"Buscar": "Rechercher", "← Volver": "← Retour", "Iniciar sesión con Twitch": "Se connecter avec Twitch", "Con tu usuario y contraseña o escanea el QR en tu TV": "Avec votre nom d'utilisateur et mot de passe, ou scannez le QR sur votre TV", "Canales seguidos": "Chaînes suivies", "Destacados": "À la une", "Streamers top": "Top streamers", "Juegos top": "Top jeux", "Categorías": "Catégories", "Ajustes": "Paramètres", "Cuenta": "Compte", "Donar": "Faire un don", "Sugerencias": "Suggestions", "Enviar sugerencia o reportar un error": "Envoyer une suggestion ou signaler un bug", "Transmisiones destacadas": "Streams à la une", "Streamers más vistos ahora": "Streamers les plus regardés en ce moment", "Juegos más vistos": "Jeux les plus regardés", "En vivo ahora": "En direct maintenant", "Clips destacados": "Clips à la une", "VODs recientes": "VOD récentes", "Buscar canal": "Rechercher une chaîne", "Buscar canal…": "Rechercher une chaîne…", "Cerrar búsqueda": "Fermer la recherche", "Sugerencias de canales": "Suggestions de chaînes", "Nombre del canal de Twitch...": "Nom de la chaîne Twitch...", "Escribe con tu teclado (PC) o usa el control del TV para abrir el teclado en pantalla.": "Tapez au clavier (PC) ou utilisez la télécommande de la TV pour ouvrir le clavier à l'écran.", "Buscando…": "Recherche…", "CANAL NO ENCONTRADO": "CHAÎNE INTROUVABLE", "Cargando…": "Chargement…", "EN VIVO": "EN DIRECT", "OFFLINE": "HORS LIGNE", "(sin título)": "(sans titre)", "Sin transmisiones recientes": "Aucun stream récent", "ayer": "hier", "Inicia sesión para ver canales seguidos": "Connectez-vous pour voir les chaînes suivies", "No hay transmisiones en vivo de este juego ahora.": "Aucun stream en direct pour ce jeu pour le moment.", "No se pudieron cargar juegos.": "Impossible de charger les jeux.", "No se pudieron cargar streamers.": "Impossible de charger les streamers.", "No se pudieron cargar transmisiones en español.": "Impossible de charger les streams en français.", "Este...
+    DICTS.pt = {
+        "Buscar":"Buscar","Canales seguidos":"Canais seguidos","Destacados":"Destaques","Categorías":"Categorias","← Volver":"← Voltar",
+        "Streamers top":"Principais streamers","Juegos top":"Principais jogos","Ajustes":"Configurações","Cuenta":"Conta","Donar":"Doar","Sugerencias":"Sugestões","Enviar sugerencia o reportar un error":"Enviar sugestão ou relatar um problema",
+        "Transmisiones destacadas":"Transmissões em destaque","Streamers más vistos ahora":"Streamers mais assistidos agora","Juegos más vistos":"Jogos mais assistidos","En vivo ahora":"Ao vivo agora",
+        "Clips destacados":"Clipes em destaque","VODs recientes":"VODs recentes","Buscar canal":"Buscar canal","Buscar canal…":"Buscar canal…","Cerrar búsqueda":"Fechar busca",
+        "Sugerencias de canales":"Sugestões de canais","Nombre del canal de Twitch...":"Nome do canal da Twitch...","Escribe con tu teclado (PC) o usa el control del TV para abrir el teclado en pantalla.":"Digite pelo teclado (PC) ou use o controle remoto da TV para abrir o teclado na tela.",
+        "Buscando…":"Buscando…","CANAL NO ENCONTRADO":"CANAL NÃO ENCONTRADO","Cargando…":"Carregando…","EN VIVO":"AO VIVO","OFFLINE":"OFFLINE","(sin título)":"(sem título)",
+        "Sin transmisiones recientes":"Nenhuma transmissão recente","ayer":"ontem","Inicia sesión para ver canales seguidos":"Entre na sua conta para ver os canais seguidos",
+        "No hay transmisiones en vivo de este juego ahora.":"Não há transmissões ao vivo deste jogo no momento.","No se pudieron cargar juegos.":"Não foi possível carregar os jogos.","No se pudieron cargar streamers.":"Não foi possível carregar os streamers.",
+        "No se pudieron cargar transmisiones en español.":"Não foi possível carregar as transmissões em espanhol.","Este canal no tiene VODs recientes.":"Este canal não tem VODs recentes.","Este canal no tiene clips destacados.":"Este canal não tem clipes em destaque.",
+        "Ver en vivo":"Assistir ao vivo","Seguido ✓":"Seguindo ✓","Foto de perfil":"Foto do perfil","Ajustes de reproducción":"Configurações de reprodução","Información del stream":"Informações da transmissão",
+        "Abrir canal del streamer":"Abrir canal do streamer","Abrir streams de este juego":"Abrir transmissões deste jogo","Adelantar 10 segundos":"Avançar 10 segundos","Retroceder 10 segundos":"Voltar 10 segundos",
+        "Pausar":"Pausar","Reproducir":"Reproduzir","Progreso del video":"Progresso do vídeo","Silenciar o activar sonido":"Ativar ou desativar o som","Calidad":"Qualidade","Auto":"Automática",
+        "Tamaño texto chat":"Tamanho do texto do chat","Mostrar chat":"Mostrar chat","Sí":"Sim","Ancho del chat":"Largura do chat","Altura del chat":"Altura do chat","Posición del chat":"Posição do chat","Posición vertical del chat":"Posição vertical do chat","Arriba":"Em cima","Abajo":"Embaixo",
+        "Izquierda":"Esquerda","Derecha":"Direita","Volver":"Voltar","Iniciar sesión con Twitch":"Entrar com a Twitch","Con tu usuario y contraseña o escanea el QR en tu TV":"Entre com seu usuário e senha ou leia o QR Code na TV",
+        "No se pudo cargar Twitch Embed":"Não foi possível carregar o Twitch Embed","Twitch Embed no está disponible":"O Twitch Embed está indisponível","No se pudo cargar el reproductor de Twitch.":"Não foi possível carregar o player da Twitch.",
+        "Comprueba la conexión a Internet y vuelve a pulsar Actualizar.":"Verifique sua conexão com a internet e selecione Atualizar novamente.","Chatear":"Conversar no chat","Chatea":"Converse no chat","Chatea...":"Converse...","Cerrar chat":"Fechar chat","Enviar mensaje al chat":"Enviar mensagem ao chat","Código QR de Paypal":"QR Code do PayPal","Código QR de Nequi":"QR Code do Nequi",
+        "Conectando al chat…":"Conectando ao chat…","Cargando repetición del chat…":"Carregando replay do chat…","Este video no tiene chat guardado o Twitch no permite verlo desde acá.":"Este vídeo não tem chat salvo ou a Twitch não permite exibi-lo aqui.",
+        "No se pudo cargar la repetición del chat.":"Não foi possível carregar o replay do chat.","No se pudo enviar: el chat no está conectado en este momento.":"Não foi possível enviar: o chat está desconectado no momento.",
+        "Para enviar mensajes al chat necesitas iniciar sesión con Twitch.":"Para enviar mensagens no chat, entre com sua conta da Twitch.","Tu sesión de Twitch venció. Volvés a modo solo lectura — iniciá sesión de nuevo desde \"Iniciar sesión\".":"Sua sessão da Twitch expirou. O chat voltou ao modo somente leitura. Entre novamente em \"Entrar\".",
+        "Chat grande derecha":"Chat grande à direita","Chat mediano derecha":"Chat médio à direita","Chat pequeño derecha":"Chat pequeno à direita","Chat grande izquierda":"Chat grande à esquerda","Chat mediano izquierda":"Chat médio à esquerda","Chat pequeño izquierda":"Chat pequeno à esquerda",
+        "Idioma":"Idioma","Automático":"Automático","Tema":"Tema","Claro":"Claro","Oscuro":"Escuro","Tamaño texto app":"Tamanho do texto do app","Color de texto":"Cor do texto","Blanco":"Branco","Amarillo":"Amarelo","Verde":"Verde","Cian":"Ciano","Rojo":"Vermelho","Negro":"Preto","Tamaño tarjetas":"Tamanho dos cartões",
+        "Tipo de fuente":"Tipo de fonte","Predeterminada":"Padrão","Serif":"Serifada","Mono":"Monoespaçada","Verdana":"Verdana","Casual":"Casual","Normal":"Normal","Medio":"Médio","Grande":"Grande","Cursiva":"Itálica",
+        "Iniciar sesión":"Entrar","Iniciar con QR (TV)":"Entrar com QR Code (TV)","Recargar app":"Recarregar app","Salir":"Sair","Cerrar":"Fechar","Cerrar sesión":"Sair da conta","Ver perfil":"Ver perfil","Cancelar":"Cancelar",
+        "Sesión iniciada. Ya podés chatear con tu nombre.":"Sessão iniciada. Você já pode conversar usando seu nome.","Preparando código QR…":"Preparando QR Code…","Un momento.":"Aguarde um instante.",
+        "Inicia sesión desde tu celular":"Entre pelo celular","Escanea el código con la cámara, o ve a twitch.tv/activate en cualquier dispositivo y escribe el código de 8 dígitos.":"Leia o código com a câmera ou acesse twitch.tv/activate em qualquer dispositivo e digite o código de 8 dígitos.",
+        "Código QR para iniciar sesión en Twitch":"QR Code para entrar na Twitch","No se pudo iniciar sesión":"Não foi possível entrar","Reintentar con QR":"Tentar novamente com QR Code","Iniciar sesión (redirigir)":"Entrar (redirecionar)",
+        "No se pudo preparar el login (sin conexión con Twitch).":"Não foi possível preparar o acesso (sem conexão com a Twitch).","No se pudo iniciar el login por QR.":"Não foi possível iniciar o acesso por QR Code.","No se pudo conectar con Twitch.":"Não foi possível conectar à Twitch.","El código QR expiró. Probá de nuevo.":"O QR Code expirou. Tente novamente.",
+        "Pulsa atrás de nuevo para salir":"Pressione Voltar novamente para sair","Presiona atrás de nuevo para salir":"Pressione Voltar novamente para sair","¿Deseas salir? Pulsa atrás de nuevo para salir de la app":"Quer sair? Pressione Voltar novamente para fechar o app",
+        "Gris":"Cinza","Gris oscuro":"Cinza-escuro","No":"Não","Enviar":"Enviar","Espacio":"Espaço","Escribir":"Digitar",
+        "Última vez en vivo:":"Última vez ao vivo:","No se encontró el canal":"Canal não encontrado","No se pudo completar el login":"Não foi possível concluir o acesso","Cambiar calidad":"Alterar qualidade","Recargar stream":"Recarregar transmissão","Métodos de donación":"Formas de doação",
+        "Portada de":"Capa de","Foto de perfil de":"Foto do perfil de","Se perdió la conexión con el chat, reconectando…":"A conexão com o chat caiu. Reconectando…"
+    };
+    DICTS.pt["Transmisiones destacadas"] = "Transmissões em destaque";
     var OSK_I18N = {
         ru: {"Enviar": "Отправить", "Espacio": "Пробел", "Escribir": "Написать"},
         it: {"Enviar": "Invia", "Espacio": "Spazio", "Escribir": "Scrivi"},
@@ -164,6 +198,25 @@ window.addEventListener("keydown", function (e) {
             flw: function (x) { return "Twitch n'autorise plus de suivre des chaînes depuis des applications tierces : il faut le confirmer sur Twitch. Ouvrir la chaîne de " + x + " sur Twitch pour la suivre ?"; },
             unf: function (x) { return "Twitch n'autorise plus de ne plus suivre des chaînes depuis des applications tierces : il faut le confirmer sur Twitch. Ouvrir la chaîne de " + x + " sur Twitch pour ne plus la suivre ?"; } }
     };
+    L.pt = {
+        loc: "pt-BR",
+        min: function (n) { return n + " min atrás"; },
+        h: function (n) { return n + " h atrás"; },
+        d: function (n) { return n + (Number(n) === 1 ? " dia atrás" : " dias atrás"); },
+        mo: function (n) { return n + (Number(n) === 1 ? " mês atrás" : " meses atrás"); },
+        y: function (n) { return n + (Number(n) === 1 ? " ano atrás" : " anos atrás"); },
+        last: function (x) { return "Última vez ao vivo: " + x; },
+        view: function (n) { return n + " espectadores"; },
+        views: function (n) { return n + " visualizações"; },
+        fol: function (n) { return n + " seguidores"; },
+        nf: function (x) { return "Canal \"" + x + "\" não encontrado."; },
+        lf: function (x) { return "Não foi possível concluir o acesso (" + x + ")."; },
+        cov: function (x) { return "Capa de " + x; },
+        pfp: function (x) { return "Foto do perfil de " + x; },
+        chat: function (r) { return "A conexão com o chat caiu. Reconectando…" + r.replace("(código ", "(código "); },
+        flw: function (x) { return "A Twitch exige que você confirme o seguimento de canais no site. Abrir o canal de " + x + " na Twitch para seguir?"; },
+        unf: function (x) { return "A Twitch exige que você confirme quando deixar de seguir canais no site. Abrir o canal de " + x + " na Twitch?"; }
+    };
     var PAT_CACHE = {};
     function patternsFor(lang) {
         if (PAT_CACHE[lang]) return PAT_CACHE[lang];
@@ -202,9 +255,9 @@ window.addEventListener("keydown", function (e) {
         } catch (e) {}
         for (var i = 0; i < list.length; i++) {
             var code = String(list[i] || "").toLowerCase().split(/[-_]/)[0];
-            if (SUPPORTED.indexOf(code) >= 0) return code;
+            if (code === "pt") return "pt";
         }
-        return "en";
+        return "pt";
     }
     function resolve() {
         var s = getSetting();
@@ -4940,6 +4993,7 @@ function renderAccountSettings() {
                 <button data-nav-btn data-value="auto">Automático</button>
                 <button data-nav-btn data-value="en">English</button>
                 <button data-nav-btn data-value="es">Español</button>
+                <button data-nav-btn data-value="pt">Português (Brasil)</button>
                 <button data-nav-btn data-value="ru">Русский</button>
                 <button data-nav-btn data-value="it">Italiano</button>
                 <button data-nav-btn data-value="fr">Français</button>

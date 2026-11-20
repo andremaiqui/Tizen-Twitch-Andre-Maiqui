@@ -1,6 +1,6 @@
-name: Build Tizen .wgt
+name: Compilar Tizen (.wgt)
 
-# Genera y publica el paquete Tizen en cada actualización de main.
+# Gera e publica o pacote Tizen a cada atualização da branch main.
 concurrency:
   group: osmtwich-release-${{ github.sha }}
   cancel-in-progress: false
@@ -15,8 +15,8 @@ permissions:
   contents: write
 
 env:
-  # Primera versión del esquema: 2.7.1 -> 2.7.2 ... 2.7.9 -> 2.8.0 ...
-  # (la lógica está en .github/scripts/compute-version.sh)
+  # Primeira versão do esquema: 2.7.1 -> 2.7.2 ... 2.7.9 -> 2.8.0 ...
+  # (a lógica está em .github/scripts/compute-version.sh)
   VERSION_START: "2.7.1"
 
 jobs:
@@ -27,22 +27,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Actualizar versión en config.xml
+      - name: Atualizar versão em config.xml
         run: |
           APP_VERSION="$(bash .github/scripts/compute-version.sh)"
           sed -i -E "s/const APP_VERSION = \"[^\"]*\"/const APP_VERSION = \"$APP_VERSION\"/" index.html
-          grep -q "const APP_VERSION = \"$APP_VERSION\"" index.html || { echo "ERROR: no se pudo actualizar APP_VERSION"; exit 1; }
+          grep -q "const APP_VERSION = \"$APP_VERSION\"" index.html || { echo "ERRO: não foi possível atualizar APP_VERSION"; exit 1; }
           VERSION="$APP_VERSION"
-          echo "Nueva versión: $VERSION"
+          echo "Nova versão: $VERSION"
           VERSION="$VERSION" perl -0pi -e 's/(<widget\b[^>]*?\sversion=")[^"]*(")/$1$ENV{VERSION}$2/s' tizen/config.xml
-          grep -q "version=\"$VERSION\"" tizen/config.xml || { echo "ERROR: no se pudo actualizar la versión en config.xml"; exit 1; }
+          grep -q "version=\"$VERSION\"" tizen/config.xml || { echo "ERRO: não foi possível atualizar a versão em config.xml"; exit 1; }
           grep -n 'version=' tizen/config.xml
 
-      - name: Empaquetar .wgt unsigned
+      - name: Empacotar .wgt sem assinatura
         run: |
-          # La app va directamente como index.html dentro del .wgt (sin lanzador
-          # que redirige a app.html): funciona igual en el TV real y en emuladores
-          # web, donde una navegación relativa daba 404.
+          # O app é incluído diretamente como index.html no .wgt, sem um iniciador
+          # que redireciona para app.html. Assim funciona na TV e nos emuladores web,
+          # nos quais a navegação por caminho relativo poderia retornar erro 404.
           cp index.html tizen/index.html
           cp twitch-logo.png tizen/twitch-logo.png
           cd tizen
@@ -50,13 +50,13 @@ jobs:
           cd ..
           ls -la OsmTwich.wgt
 
-      - name: Subir como artifact del run
+      - name: Enviar artefato da execução
         uses: actions/upload-artifact@v4
         with:
           name: OsmTwich-wgt
           path: OsmTwich.wgt
 
-      - name: Crear o actualizar Release
+      - name: Criar ou atualizar a versão
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.APP_VERSION }}
@@ -66,20 +66,22 @@ jobs:
           fail_on_unmatched_files: true
           files: OsmTwich.wgt
           body: |
-            Versión: ${{ env.APP_VERSION }}
+            Versão: ${{ env.APP_VERSION }}
 
-            ## Cambios
-            ${{ github.event.head_commit.message }}
+            ## Alterações
+            Atualização do aplicativo Twitch e melhorias de compatibilidade para TVs Samsung com Tizen.
+
+            O pacote `.wgt` está disponível para download nos arquivos desta versão.
 
             Commit: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Guardar versión de la secuencia
+      - name: Registrar versão da sequência
         run: |
           TAG="osmtwich-version-v${APP_VERSION}"
           if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
-            echo "La versión $APP_VERSION ya está registrada."
+            echo "A versão $APP_VERSION já está registrada."
           else
             git tag "$TAG" "$GITHUB_SHA"
             git push origin "refs/tags/$TAG"
