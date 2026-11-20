@@ -13,9 +13,9 @@ permissions:
   contents: write
 
 env:
-  # Primera versión del esquema: 2.7.1 -> 2.7.2 ... 2.7.9 -> 2.8.0 ...
+  # El esquema compartido comienza en 1.0.0.
   # (la lógica está en .github/scripts/compute-version.sh, compartida con Tizen)
-  VERSION_START: "2.7.1"
+  VERSION_START: "1.0.0"
 
 jobs:
   build-apk:
@@ -180,7 +180,7 @@ jobs:
 
       - name: Guardar versión de la secuencia
         run: |
-          TAG="osmtwich-version-v${APP_VERSION}"
+          TAG="twitch-tizen-version-v${APP_VERSION}"
           if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
             echo "La versión $APP_VERSION ya está registrada."
           else

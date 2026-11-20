@@ -15,9 +15,9 @@ permissions:
   contents: write
 
 env:
-  # Primeira versão do esquema: 2.7.1 -> 2.7.2 ... 2.7.9 -> 2.8.0 ...
+  # A versão exibida começa em 1.0 (manifesto Tizen: 1.0.0).
   # (a lógica está em .github/scripts/compute-version.sh)
-  VERSION_START: "2.7.1"
+  VERSION_START: "1.0.0"
 
 jobs:
   build-wgt:
@@ -31,8 +31,11 @@ jobs:
         id: version
         run: |
           APP_VERSION="$(bash .github/scripts/compute-version.sh)"
-          WGT_NAME="Twitch-for-TizenOS-Andre-Maiqui-${APP_VERSION}.wgt"
+          VERSION_LABEL="$APP_VERSION"
+          if [[ "$VERSION_LABEL" == *.0 ]]; then VERSION_LABEL="${VERSION_LABEL%.*}"; fi
+          WGT_NAME="Twitch-for-TizenOS-Andre-Maiqui-${VERSION_LABEL}.wgt"
           echo "app_version=$APP_VERSION" >> "$GITHUB_OUTPUT"
+          echo "version_label=$VERSION_LABEL" >> "$GITHUB_OUTPUT"
           echo "wgt_name=$WGT_NAME" >> "$GITHUB_OUTPUT"
           sed -i -E "s/const APP_VERSION = \"[^\"]*\"/const APP_VERSION = \"$APP_VERSION\"/" index.html
           grep -q "const APP_VERSION = \"$APP_VERSION\"" index.html || { echo "ERRO: não foi possível atualizar APP_VERSION"; exit 1; }
@@ -61,7 +64,7 @@ jobs:
       - name: Enviar artefato da execução
         uses: actions/upload-artifact@v4
         with:
-          name: Twitch-for-TizenOS-Andre-Maiqui-${{ steps.version.outputs.app_version }}
+          name: Twitch-for-TizenOS-Andre-Maiqui-${{ steps.version.outputs.version_label }}
           path: ${{ steps.version.outputs.wgt_name }}
 
       - name: Criar ou atualizar a versão
@@ -69,12 +72,12 @@ jobs:
         with:
           tag_name: v${{ steps.version.outputs.app_version }}
           target_commitish: ${{ github.sha }}
-          name: Twitch for TizenOS - Andre Maiqui - ${{ steps.version.outputs.app_version }}
+          name: Twitch for TizenOS - Andre Maiqui - ${{ steps.version.outputs.version_label }}
           make_latest: "true"
           fail_on_unmatched_files: true
           files: ${{ steps.version.outputs.wgt_name }}
           body: |
-            Versão: ${{ steps.version.outputs.app_version }}
+            Versão: ${{ steps.version.outputs.version_label }} (manifesto Tizen: ${{ steps.version.outputs.app_version }})
 
             ## Alterações
             Atualização do aplicativo Twitch e melhorias de compatibilidade para TVs Samsung com Tizen.
@@ -87,7 +90,7 @@ jobs:
 
       - name: Registrar versão da sequência
         run: |
-          TAG="osmtwich-version-v${{ steps.version.outputs.app_version }}"
+          TAG="twitch-tizen-version-v${{ steps.version.outputs.app_version }}"
           if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
             echo "A versão ${{ steps.version.outputs.app_version }} já está registrada."
           else
