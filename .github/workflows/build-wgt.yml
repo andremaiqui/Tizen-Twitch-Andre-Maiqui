@@ -28,8 +28,12 @@ jobs:
           fetch-depth: 0
 
       - name: Atualizar versão em config.xml
+        id: version
         run: |
           APP_VERSION="$(bash .github/scripts/compute-version.sh)"
+          WGT_NAME="Twitch-for-TizenOS-Andre-Maiqui-${APP_VERSION}.wgt"
+          echo "app_version=$APP_VERSION" >> "$GITHUB_OUTPUT"
+          echo "wgt_name=$WGT_NAME" >> "$GITHUB_OUTPUT"
           sed -i -E "s/const APP_VERSION = \"[^\"]*\"/const APP_VERSION = \"$APP_VERSION\"/" index.html
           grep -q "const APP_VERSION = \"$APP_VERSION\"" index.html || { echo "ERRO: não foi possível atualizar APP_VERSION"; exit 1; }
           VERSION="$APP_VERSION"
@@ -39,6 +43,8 @@ jobs:
           grep -n 'version=' tizen/config.xml
 
       - name: Empacotar .wgt sem assinatura
+        env:
+          WGT_NAME: ${{ steps.version.outputs.wgt_name }}
         run: |
           # O app é incluído diretamente como index.html no .wgt, sem um iniciador
           # que redireciona para app.html. Assim funciona na TV e nos emuladores web,
@@ -46,27 +52,27 @@ jobs:
           cp index.html tizen/index.html
           cp twitch-logo.png tizen/twitch-logo.png
           cd tizen
-          zip -r ../OsmTwich.wgt . -x ".*"
+          zip -r "../$WGT_NAME" . -x ".*"
           cd ..
-          ls -la OsmTwich.wgt
+          ls -la "$WGT_NAME"
 
       - name: Enviar artefato da execução
         uses: actions/upload-artifact@v4
         with:
-          name: OsmTwich-wgt
-          path: OsmTwich.wgt
+          name: Twitch-for-TizenOS-Andre-Maiqui-${{ steps.version.outputs.app_version }}
+          path: ${{ steps.version.outputs.wgt_name }}
 
       - name: Criar ou atualizar a versão
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ env.APP_VERSION }}
+          tag_name: v${{ steps.version.outputs.app_version }}
           target_commitish: ${{ github.sha }}
-          name: Twitch for TizenOS - Andre Maiqui - ${{ env.APP_VERSION }}
+          name: Twitch for TizenOS - Andre Maiqui - ${{ steps.version.outputs.app_version }}
           make_latest: "true"
           fail_on_unmatched_files: true
-          files: OsmTwich.wgt
+          files: ${{ steps.version.outputs.wgt_name }}
           body: |
-            Versão: ${{ env.APP_VERSION }}
+            Versão: ${{ steps.version.outputs.app_version }}
 
             ## Alterações
             Atualização do aplicativo Twitch e melhorias de compatibilidade para TVs Samsung com Tizen.
@@ -79,9 +85,9 @@ jobs:
 
       - name: Registrar versão da sequência
         run: |
-          TAG="osmtwich-version-v${APP_VERSION}"
+          TAG="osmtwich-version-v${{ steps.version.outputs.app_version }}"
           if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
-            echo "A versão $APP_VERSION já está registrada."
+            echo "A versão ${{ steps.version.outputs.app_version }} já está registrada."
           else
             git tag "$TAG" "$GITHUB_SHA"
             git push origin "refs/tags/$TAG"

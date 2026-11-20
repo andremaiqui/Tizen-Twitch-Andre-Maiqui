@@ -1,12 +1,12 @@
 # Compilação e publicação para Tizen (.wgt)
 
-Este repositório está configurado para gerar o pacote da Samsung Tizen TV. O fluxo de trabalho `.github/workflows/build-wgt.yml` cria o arquivo `OsmTwich.wgt`.
+Este repositório está configurado para gerar o pacote da Samsung Tizen TV. O fluxo de trabalho `.github/workflows/build-wgt.yml` cria um arquivo no padrão `Twitch-for-TizenOS-Andre-Maiqui-<versão>.wgt`.
 
 ## Gerar o pacote
 
 - Na aba **Ações**, selecione **Compilar Tizen (.wgt)** e clique em **Executar fluxo de trabalho** para iniciar manualmente.
 - Cada envio de alterações para a branch `main` também inicia a compilação.
-- Baixe `OsmTwich.wgt` em **Ações → execução → Artefatos** ou na página de **Versões**.
+- Baixe `Twitch-for-TizenOS-Andre-Maiqui-<versão>.wgt` em **Ações → execução → Artefatos** ou na página de **Versões**.
 
 O fluxo usa `index.html` e os arquivos da pasta `tizen/`. A interface, os estilos e a lógica do app ficam em `index.html`; as APIs em `api/` cuidam da autenticação e dos comentários de VOD.
 
